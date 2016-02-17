@@ -1,0 +1,9 @@
+Design classes with a single responsibility.
+  - Always access data via methods (NOT INSTANCE VARIABLES)
+  - If you're unsure of how to change something for the future you may not
+    have enough information so just wait until you have more.
+  - Classes must be easy to reuse even in unexpected ways
+  - If they do too much at once they are harder to reuse
+  - Rephrase methods as questions and ask them out loud
+  - Describe the class in a single sentence
+    - Look out for words like 'and' and 'or' they signify cohesion problems
