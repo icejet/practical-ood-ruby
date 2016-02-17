@@ -1,9 +1,68 @@
-Design classes with a single responsibility.
-  - Always access data via methods (NOT INSTANCE VARIABLES)
-  - If you're unsure of how to change something for the future you may not
-    have enough information so just wait until you have more.
-  - Classes must be easy to reuse even in unexpected ways
-  - If they do too much at once they are harder to reuse
-  - Rephrase methods as questions and ask them out loud
-  - Describe the class in a single sentence
-    - Look out for words like 'and' and 'or' they signify cohesion problems
+Design classes with a single responsibility
+  - When adding new classes keep it simple, don't stress over unknowns
+  - Make it do what it needs to do now AND make it easy to change later
+    - This is where the true craft of programming comes to light
+
+What belongs in a class
+  - Methods are defined in classes and affect how the program is viewed forever
+  - It's impossible to get this right early
+    - You will never know less than you do right now
+    - If the app is successful the design will need to change later
+  - Design is more about preserving changeability than achieving perfection
+
+Organizing code to allow for easy changes
+  - You need to define 'easy to change' to be successful here
+  - Define easy to change as
+    - Changes have no unexpected side effects
+    - Small changes to requirements = small changes in code
+    - Existing code is easy to reuse
+    - The easiest way to make a change is to add more code that is easy to change
+  - With this definition code should have the following qualities
+    - Transparent: Consequences of change should be obvious
+    - Reasonable: The cost of any change should be proportional to the benefits
+    - Usable: Existing code should be usable even in new/unexpected contexts
+    - Exemplary: The code should encourage those who change it to do the same thing
+
+Creating classes that have a single responsibility
+  - Reusable classes have few entanglements and are well defined
+  - A class with more than one responsibility is hard to reuse
+  - You should be able to use classes as building block in new ways
+
+Determining if a class has a single responsibility
+  - Rephrase methods as questions (Gear, what is your ratio?)
+    - This will quickly help root out possible problems
+  - Attempt to describe the class in a single sentence.
+    - If you need to use 'and' or 'or' something is wrong
+      - Or means that the class does many things that aren't even related
+      - This is referred to as cohesion
+      - When everything in a class is related to it's central purpose it is
+        highly cohesive
+
+Determining when to make design decisions
+  - Do not make design decisions too early even if the design is not inline
+    with the expectations of design gurus
+  - Ask, What is the cost of doing nothing today?
+    - Sometimes it's best to just wait for more info
+    - Don't try to anticipate future needs early
+  - “improve it now” versus “improve it later” tension always exists.
+    Applications are never perfectly designed. Every choice has a price. A good
+    designer understands this tension and minimizes costs by making informed
+    tradeoffs between the needs of the present and the possibilities of the future
+
+Writing code that embraces change
+  - Depend on behavior, not data
+    - This is DRY because code lives in one (and only one) place
+    - This means always access your data through accessor methods
+      - Always hide instance variables
+      - Ruby has attr_reader for this purpose
+  - Hide data structures
+    - 2 dimensional arrays and arrays of hashes are complex
+      - Methods using the array are now dependent on the array structure
+    - The knowledge of how things are structured need to exist in one place
+    - In ruby the Struct class can wrap complex structures
+      - Then define a method that parses incoming data and map to the structure
+  - Enforce single responsibility everywhere
+    - Methods should also have a single responsibility
+    - Separate iteration from action
+    - Enforcing single responsibility should be done even if future design is
+      unclear because it will help clarify things
