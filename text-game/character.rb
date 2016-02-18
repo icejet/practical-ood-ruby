@@ -1,8 +1,9 @@
 class Character
-  attr_reader :name, :hit_points, :attack_power, :equipped
+  attr_reader :name, :hit_points, :attack_power, :equipped, :base_multiplier
 
   def initialize(name)
     @name = name
+    @base_multiplier = 5
   end
 
   def assign_hp
@@ -18,8 +19,15 @@ class Character
     @equipped = items.sample
   end
 
-  def attack
-    puts "#{name} attacks with #{equipped} and hits for #{attack_power}"
+  def attack(target)
+    damage = attack_power * base_multiplier + rand(1..5)
+    puts "#{name} attacks with #{equipped}"
+    target.take_damage(damage)
+  end
+
+  def take_damage(damage)
+    @hit_points -= damage
+    puts "#{name} is hit for #{damage}"
   end
 end
 
